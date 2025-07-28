@@ -10,5 +10,6 @@ urlpatterns=[
     # path('contactPage',views.contactPageView,name="contactPage")
     # path('aboutPage',views.aboutPageView,name="aboutPage")
     path('loginPage', views.loginView, name="loginPage"),
-    path('dashboardPage', views.dashboardView, name='dashboardPage')
+    path('dashboardPage', views.dashboardView, name='dashboardPage'),
+    path('logOutPage',views.logOutView, name='logOutPage')
 ]
