@@ -1,15 +1,18 @@
 {% extends './base.html'%}
 {% block content %}
     <div class="container">
+        
         <div class="shadow-lg border border-warning bg-light rounded-3 p-3 mx-auto my-5"
             style="max-width: 23%;min-height:40%">
             <h1 class="text-center mb-5" style="font-family:Verdana;">Sign In</h1>
             <div class="container">
+                {% include './includes/_message.html'%}
+
                 <div>
                     <form method="POST">
                         {% csrf_token %}
-                    
                         {{ form.as_div}}
+                        
                         <br>
                         <div class="">
                             <button class="btn btn-success w-100" type="submit">Sign In</button>
