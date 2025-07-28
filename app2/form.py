@@ -17,10 +17,10 @@ class contactForm(forms.Form):
             raise forms.ValidationError("Minimum of 3 Characters")
 
 class registerForm(forms.ModelForm):
-    username=forms.CharField(label="username", max_length=40,required=True)
-    email=forms.EmailField(label="email", max_length=40 ,required=True)
-    password=forms.CharField(label="password", max_length=50 ,required=True)
-    confirm_password=forms.CharField(label="confirm_password", widget=forms.PasswordInput, max_length=50 ,required=True)
+    username=forms.CharField(label="username", max_length=40,required=True, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Username','required':True}))
+    email=forms.EmailField(label="email", max_length=40 ,required=True, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email','required':True}))
+    password=forms.CharField(label="password", max_length=50 ,required=True, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Password','required':True}))
+    confirm_password=forms.CharField(label="confirm_password", widget=forms.PasswordInput, max_length=50 ,required=True, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Confirm password','required':True}))
 
     def clean(self):
         cleaned_data=super().clean()
