@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import contactForm, registerForm, loginForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
 # Create your views here.
 def landingPageView(request):
@@ -37,7 +38,8 @@ def registerPageView(request):
             user=form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
-            return render(request,'register.html', {'form':form})
+            messages.success(request, "Hurry!! Account Created Successfully !!")
+            return redirect('loginPage')
     return render(request,"register.html",{'form':form})
 
 def loginView(request):
@@ -57,11 +59,15 @@ def loginView(request):
                 return render(request,'loginPage.html',{'form':form})
         else:
             return render(request,'loginPage.html',{'form':form})
+        
     return render(request, 'loginPage.html', {'form':form})
 
 def dashboardView(request):
     return render(request, 'dashboard.html')
 
+def logOutView(request):
+    logout(request)
+    return redirect('landingPage')
 # my_name="Eeksha"
 users=[
     {"name":"Eeksha", "age": 21},
