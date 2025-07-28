@@ -9,5 +9,6 @@ urlpatterns=[
     path('registerPage',views.registerPageView,name="registerPage"),
     # path('contactPage',views.contactPageView,name="contactPage")
     # path('aboutPage',views.aboutPageView,name="aboutPage")
-    path('loginPage', views.loginView, name="loginPage")
+    path('loginPage', views.loginView, name="loginPage"),
+    path('dashboardPage', views.dashboardView, name='dashboardPage')
 ]

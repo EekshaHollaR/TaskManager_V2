@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import contactForm, registerForm, loginForm
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 def landingPageView(request):
@@ -44,10 +45,22 @@ def loginView(request):
     if request.method=="POST":
         form=loginForm(request.POST)
         if form.is_valid():
-            return render(request, 'dashboard.html')
+            un=form.cleaned_data['username']
+            pwd=form.cleaned_data['password']
+
+            user=authenticate(request,username=un,password=pwd)
+            
+            if user is not None:
+                login(request,user)
+                return redirect('dashboardPage')
+            else:
+                return render(request,'loginPage.html',{'form':form})
         else:
             return render(request,'loginPage.html',{'form':form})
     return render(request, 'loginPage.html', {'form':form})
+
+def dashboardView(request):
+    return render(request, 'dashboard.html')
 
 # my_name="Eeksha"
 users=[
