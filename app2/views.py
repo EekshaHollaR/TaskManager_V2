@@ -30,6 +30,10 @@ def pricingPageView2(request):
 
 def registerPageView(request):
     form = registerForm()
+    if request.method=='POST':
+        form=registerForm(request.POST)
+        if form.is_valid():
+            return render(request,'register.html', {'form':form})
     return render(request,"register.html",{'form':form})
 
 # my_name="Eeksha"
