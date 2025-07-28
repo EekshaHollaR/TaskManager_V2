@@ -1,0 +1,31 @@
+{%extends './base.html'%}
+{%block content%}
+    <div class="d-flex flex-column align-items-center">
+        <div class="">
+        <h1>Contact Form</h1>
+        <form method="POST" class="form">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-6 my-3">
+                    <input class="form-control" type="text" placeholder="Username" name="name"/>
+                </div>
+                <div class="col-6 my-3">
+                    <input class="form-control" type="email" placeholder="Email" name="email"/>
+                </div>
+                <div class="col-12 my-3">
+                    <textarea class="form-control" rows="6" placeholder="Message" name="message"></textarea>
+                </div>
+                <center>
+                    {% comment %} <a href="mailto:xyz@gmail.com"> {% endcomment %}
+                        <button type="submit"class="btn btn-success px-5">Send</button>
+                    {% comment %} </a> {% endcomment %}
+                </center>
+            </div>
+        </form>
+        </div>
+        
+    </div>
+
+{%endblock%}
+
+    
