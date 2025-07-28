@@ -6,7 +6,8 @@ urlpatterns=[
     path('contactPage',views.contactPageView, name="contactPage"),
     path('greetPage',views.greetPageView,name="greetPage"),
     path('pricingPage2', views.pricingPageView2, name="pricingPage"),
-    path('registerPage',views.registerPageView,name="registerPage")
+    path('registerPage',views.registerPageView,name="registerPage"),
     # path('contactPage',views.contactPageView,name="contactPage")
     # path('aboutPage',views.aboutPageView,name="aboutPage")
+    path('loginPage', views.loginView, name="login")
 ]

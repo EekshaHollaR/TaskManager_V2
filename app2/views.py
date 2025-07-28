@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .form import contactForm, registerForm
+from .forms import contactForm, registerForm
 
 # Create your views here.
 def landingPageView(request):
@@ -33,6 +33,9 @@ def registerPageView(request):
     if request.method=='POST':
         form=registerForm(request.POST)
         if form.is_valid():
+            user=form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
             return render(request,'register.html', {'form':form})
     return render(request,"register.html",{'form':form})
 
