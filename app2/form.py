@@ -1,6 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.conf
+from django.contrib.auth.models import User
 class contactForm(forms.Form):
     name=forms.CharField(label="name", max_length=40, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'username','required':True}))
     email=forms.CharField(label="email", max_length=40, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email','required':True}))
