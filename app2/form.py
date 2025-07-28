@@ -1,6 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+
 class contactForm(forms.Form):
     name=forms.CharField(label="name", max_length=40, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'username','required':True}))
     email=forms.CharField(label="email", max_length=40, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email','required':True}))
@@ -19,7 +20,7 @@ class registerForm(forms.ModelForm):
     username=forms.CharField(label="username", max_length=40,required=True)
     email=forms.EmailField(label="email", max_length=40 ,required=True)
     password=forms.CharField(label="password", max_length=50 ,required=True)
-    confirm_password=forms.CharField(label="confirm_password", max_length=50 ,required=True)
+    confirm_password=forms.CharField(label="confirm_password", widget=forms.PasswordInput, max_length=50 ,required=True)
 
     def clean(self):
         cleaned_data=super().clean()
@@ -34,3 +35,6 @@ class registerForm(forms.ModelForm):
     class Meta:
         model=User
         fields=['username', 'email', 'password']
+        widgets = {
+            'password': forms.PasswordInput(),
+        }

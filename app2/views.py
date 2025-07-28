@@ -8,16 +8,28 @@ def landingPageView(request):
 def pricingPageView(request):
     return render(request,'pricingPage.html')
 def contactPageView(request):
+    message=''
     if request.method=='POST':
         f=contactForm(request.POST)
         if f.is_valid():
             print("Your response is recorded")
         else:
             print("Your Request is failed")
-    return render(request,'contactPage.html')
+            return render(request,'contactPage.html',{'form':f})
+    else:
+        f=contactForm()
+    return render(request,'contactPage.html',{"form":f, 'message':message})
+
+items=[
+    {"title":"Personal", "des":"For individuals and small teams looking to manage their tasks.", },
+    {"title":"Starter"},
+    {"title":"Advanced"}
+]
 def pricingPageView2(request):
     return render(request,'pricingPage2.html',{"items":items})
+
 def registerPageView(request):
+    form = registerForm()
     return render(request,"register.html",{'form':form})
 
 # my_name="Eeksha"
@@ -26,10 +38,6 @@ users=[
     {"name":"Prajwal", "age": 56},
     {"name":"ABC", "age": 30}
 ]
-items=[
-    {"title":"Personal", "des":"For individuals and small teams looking to manage their tasks.", },
-    {"title":"Starter"},
-    {"title":"Advanced"}
-]
+
 def greetPageView(request):
     return render(request,'greetPage.html',{"users":users})
