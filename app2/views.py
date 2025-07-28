@@ -63,7 +63,8 @@ def loginView(request):
     return render(request, 'loginPage.html', {'form':form})
 
 def dashboardView(request):
-    return render(request, 'dashboard.html')
+    username=request.user.username
+    return render(request, 'dashboard.html', {'username':username})
 
 def logOutView(request):
     logout(request)
