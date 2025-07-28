@@ -12,12 +12,13 @@
                     {{ form.as_div}}
 
                     <div class="d-grid gap-2 col-4 mx-auto">
+                        <br>
                         <button class="btn btn-success" type="submit">Register</button>
                     </div>
                 </form>
                 <div class="my-3">
                     <center>Have an account?
-                        <a href="/login" class="text-decoration-none fw-bold">Login</a>
+                        <a href={% url 'loginPage' %} class="text-decoration-none fw-bold">Login</a>
                     </center>
                 </div>
             </div>
