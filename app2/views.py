@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from .forms import contactForm, registerForm, loginForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from rest_framework import viewsets
+from .models import taskBoard
+from .serializers import TaskSerializer
 
 # Create your views here.
 def landingPageView(request):
@@ -69,6 +72,12 @@ def dashboardView(request):
 def logOutView(request):
     logout(request)
     return redirect('landingPage')
+
+class TaskView(viewsets.ModelViewSet):
+    queryset=taskBoard.objects.all()
+    serializer_class=TaskSerializer
+
+
 # my_name="Eeksha"
 users=[
     {"name":"Eeksha", "age": 21},
